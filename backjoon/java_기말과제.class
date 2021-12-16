@@ -1,0 +1,87 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.Random;
+
+public class LottoGetNumber extends JFrame implements ActionListener{
+ 
+ //객체 레퍼런스 변수 선언
+ JTextField tf1,tf2,tf3,tf4,tf5,tf6;
+ JButton btn;
+ //생성자 구현
+ public LottoGetNumber(){
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  //1. 객체생성
+  tf1 = new JTextField(2);
+  tf2 = new JTextField(2);
+  tf3 = new JTextField(2);
+  tf4 = new JTextField(2);
+  tf5 = new JTextField(2);
+  tf6 = new JTextField(2);
+  btn = new JButton("Lotto Get");
+  //2. 레이아웃 관리자 생성
+  setLayout(new FlowLayout());
+  add(tf1);add(tf2);add(tf3);add(tf4);
+  add(tf5);add(tf6);
+  add(btn);
+  //3. 이벤트 연결
+  btn.addActionListener(this);  
+  
+ }
+
+ @Override
+ public void actionPerformed(ActionEvent e){
+  int lottoNum[] = new int[6];
+  int lottoNum_user[] = new int[6];
+  int index = 0;
+  int n = 6;
+  int temp;
+  
+  //로또번호 난수 발생 후 숫자 중복 확인
+  while(index < n){
+   Random rand = new Random();
+   int rnd = rand.nextInt(45) + 1;
+   boolean FLAG = false;
+   
+   for(int i = 0; i<n; i++){
+    if(rnd == lottoNum[i]){
+     FLAG = true;
+     break;
+    }
+   }
+   if(FLAG == false){
+    lottoNum[index] = rnd;
+    index++;
+   }
+  }// end while문
+  //선택 정렬 알고리즘
+  for(int i = 0; i < n-1; i++){
+   for(int j=i+1; j<n; j++){
+    if(lottoNum[i] > lottoNum[j]){
+     temp = lottoNum[i];
+     lottoNum[i] = lottoNum[j];
+     lottoNum[j] = temp;
+    }
+   }
+  }
+  //정렬된 정수값을 JTextField에 출력
+  tf1.setText(String.valueOf(lottoNum[0]));
+  tf2.setText(String.valueOf(lottoNum[1]));
+  tf3.setText(String.valueOf(lottoNum[2]));
+  tf4.setText(String.valueOf(lottoNum[3]));
+  tf5.setText(String.valueOf(lottoNum[4]));
+  tf6.setText(String.valueOf(lottoNum[5]));
+  
+  
+ }
+ public static void main(String args[]){
+  //클래스 객체 생성 => 생성자 호출
+  LottoGetNumber objv = new LottoGetNumber();
+  objv.setSize(300, 300);
+  objv.setLocation(250, 300);
+  objv.setVisible(true);
+  
+  
+ }
+
+}

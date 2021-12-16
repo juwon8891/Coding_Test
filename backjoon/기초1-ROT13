@@ -1,0 +1,16 @@
+n = list(input().rstrip())
+result = ""
+for i in range(len(n)):
+    if str(n[i]).islower():
+        temp = (ord(n[i]) + 13)
+        if temp > 122:
+            temp = temp - 122 + 96
+    elif str(n[i]).isupper():
+        temp = (ord(n[i]) + 13)
+        if temp > 90:
+            temp = temp - 90 + 64
+    else:
+        temp = ord(n[i])
+    n[i] = chr(temp)
+    result = result + "".join(n[i])
+print(result)

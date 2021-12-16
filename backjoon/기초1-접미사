@@ -1,0 +1,8 @@
+n = input()
+l_n = list(n)
+l_st = []
+for i in range(len(n)):
+    l_st.append(n[i::])
+l_st.sort()
+for i in l_st:
+    print(i)

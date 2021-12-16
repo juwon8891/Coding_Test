@@ -1,0 +1,4 @@
+n = list(map(int, input().split()))
+a = str(n[0]) + str(n[1])
+b = str(n[2]) + str(n[3])
+print(int(a)+int(b))
