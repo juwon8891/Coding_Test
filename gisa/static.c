@@ -14,5 +14,4 @@ int main(void){
     func();
     printf("a = %d, b = %d, c = %d", a, b, c);
 
-    reutrn 0;
 }
