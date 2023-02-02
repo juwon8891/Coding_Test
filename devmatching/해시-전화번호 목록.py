@@ -1,20 +1,28 @@
-# def solution(phone_book):
-#     n = len(phone_book)
-#     phone_book.sort()
-#     answer = True
-#     for i in range(n-1):
-#         if len(phone_book[i]) < len(phone_book[i+1]):
-#             if phone_book[i+1][:len(phone_book[i])] == phone_book[i]:
-#                 answer == False
-#                 break
-#     return answer
-def solution(phoneBook):
-    phoneBook = sorted(phoneBook)
-    zip_phone = list(zip(phone_book, phone_book[1:]))
-    for p1,p2 in zip_phone:
-        if p2.startswith(p1):
-            return False
-    return True
+import re
 
-phone_book = ["12","123","1235","567","88"]
-print(solution(phone_book))
+def solution(registered_list, new_id):
+    answer = new_id
+    strings = re.findall('[a-z]', answer)
+    N = "1"
+    N1 = "11"
+    numbers = re.findall('\d', answer)
+    for _ in registered_list:
+        if answer not in registered_list:
+            break
+        elif answer in registered_list:
+            if not numbers:
+                N = 0
+            if len(N1) != len(str(N)):
+                numbers = re.findall('\d', answer)
+            elif numbers:
+                numbers = re.findall('\d', answer)
+                N = ''.join(s for s in numbers)
+            S = ''.join(s for s in strings)
+            N1 = str(int(N) + 1)
+            new_id1 = S + N1
+            answer = new_id1
+    return answer
+
+registered_list = ["cow","cow1","cow2","cow3","cow4", "cow10"]
+new_id = "cow"
+print(solution(registered_list, new_id))
