@@ -1,0 +1,122 @@
+5. Minimum Tree Path
+Given an unrooted, unweighted tree of n nodes, traverse the tree from node 1 to node n. The path must go through nodes listed in the visitNodes array in any order.
+
+ 
+
+That is, the path
+
+starts at node 1.
+
+ends at node n.
+
+can only travel from a node to an adjacent node.
+
+can visit a node any number of times.
+
+includes each of the nodes in visitNodes at least once.
+
+ 
+
+Return the length of the shortest of these paths.
+
+ 
+
+Example
+
+ 
+
+n = 5
+
+edges = [[1, 2], [1, 3], [3, 4], [3, 5]]
+
+visitNodes = [2, 4]
+
+ 
+
+
+
+ 
+
+The minimum length path is 1 → 2 → 1 → 3 → 4 → 3 → 5
+
+Return the path length, 6.
+
+ 
+Function Description
+
+Complete the function minimumTreePath in the editor below.
+
+ 
+
+minimumTreePath has the following parameters:
+
+    int n: the number of nodes in the tree
+
+    int edges[n-1][2]: a 2d array of connected nodes
+
+    int visitNodes[m]: nodes to include in the path
+
+ 
+
+Returns
+
+    int: the minimum path length
+
+ 
+
+Constraints
+
+1 ≤ n ≤  2 · 105
+1 ≤ edges[i][0], edges[i][1] ≤ n
+0 ≤ m ≤ max(0, n - 2)
+2 ≤ visitNodes[i] ≤ n-1
+The elements of visitNodes are distinct.
+ 
+
+Input Format For Custom Testing
+Sample Case 0
+Sample Input For Custom Testing
+
+ STDIN       FUNCTION
+-------     ----------
+3        →  n = 3
+2        →  edges[] rows n-1 = 2
+2        →  edges[] cols = 2
+1 2      →  edges = [(1, 2), (1, 3)] 
+1 3
+1        →  visitNodes[] size m = 1
+2        →  visitNodes = [2]
+Sample Output
+
+3
+Explanation
+
+ 
+
+
+
+ 
+
+The minimum length path is 1 → 2 → 1 →3
+
+Sample Case 1
+Sample Input For Custom Testing
+
+ STDIN        FUNCTION
+-------       ---------
+5        →    n = 5
+4        →    edges[] row size n-1 = 4
+2        →    edges[] col size = 2
+1 2      →    edges = [(1, 2), (2, 3), (2, 4), (1, 5)]
+2 3
+3 4
+1 5
+2        →    visitNodes[] size m = 2
+3        →    visitNodes = [3, 4]
+4
+Sample Output
+
+7
+Explanation
+
+1 → 2 → 3 → 2 → 4 → 2 → 1 → 5
